@@ -1,0 +1,10 @@
+# Directories
+
+output/
+.Rproj.user/
+
+# Files
+
+.DS_Store
+.Rhistory
+tidy_tuesday.Rproj
