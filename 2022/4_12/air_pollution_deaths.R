@@ -3,7 +3,7 @@ pacman::p_load(tidyverse, tidytuesdayR, janitor, transformr, # transformr if nee
                gganimate, rgdal, sf, rnaturalearth, rnaturalearthdata)
 
 # Set your GH PAT if you haven't!
-# credentials::set_github_pat("YourPAT")
+# credentials::set_github_pat()
 
 tuesdata <- tt_load('2022-04-12',
                     auth = github_pat())
