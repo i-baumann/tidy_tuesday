@@ -2,8 +2,11 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, tidytuesdayR, janitor, transformr, # transformr if needed
                gganimate, rgdal, sf, rnaturalearth, rnaturalearthdata)
 
-tuesdata <- tt_load('2022-04-12')
-tuesdata <- tt_load(2022, week = 15)
+# Set your GH PAT if you haven't!
+# credentials::set_github_pat("YourPAT")
+
+tuesdata <- tt_load('2022-04-12',
+                    auth = github_pat())
 
 death_source <- tuesdata$death_source
 
@@ -67,7 +70,8 @@ ts_plot <- ggplot(data = timeseries_world_map_proj) +
         legend.position = "bottom",
         plot.title = element_text(hjust = 0.5)) +
   labs(title = "Mortality Due to Indoor Air Pollution: {closest_state}",
-       fill = "Deaths per 100,000") +
+       fill = "Deaths per 100,000",
+       caption = "Data: Our World in Data courtesy of Tidy Tuesday") +
   guides(fill = guide_colourbar(title.position="top", title.hjust = 0.5)) +
   transition_states(year, state_length = 0, wrap = FALSE) +
   ease_aes("linear")
